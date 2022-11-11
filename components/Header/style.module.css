@@ -5,6 +5,9 @@
   padding: 10px 20px;
   position: relative;
   border-bottom: solid 0.5px #aaa;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 .row1 {
   display: flex;
@@ -114,9 +117,11 @@
 @keyframes shrink_tab_mobile {
   from {
     transform: scale(1);
+    opacity: 1;
   }
   to {
     transform: scale(0);
+    opacity: 0;
   }
 }
 

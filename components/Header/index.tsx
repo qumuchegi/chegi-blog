@@ -122,7 +122,7 @@ export default function Header(props: IHeaderProps) {
             )
           )}
         </div>
-        {selectedArticle ? (
+        {selectedArticle && isShrinkTab ? (
           <div className={`${styles.tab_container} ${styles.article_title}`}>
             <span>{selectedArticle?.title}</span>
           </div>
@@ -140,7 +140,13 @@ export default function Header(props: IHeaderProps) {
               justifyContent: "center",
             }}
           >
-            <Image src={icExpand} width={16} height={16} alt="展开" />
+            <Image
+              src={icExpand}
+              style={{ transform: `rotate(${isShrinkTab ? 0 : `180deg`})` }}
+              width={16}
+              height={16}
+              alt="展开"
+            />
           </div>
         ) : null}
       </div>
