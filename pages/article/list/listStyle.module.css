@@ -6,8 +6,6 @@
   justify-content: center;
   background-color: black;
   color: #fff;
-  height: calc(100vh - var(--home-page-header-height));
-  overflow-y: scroll;
 }
 .list_item {
   padding: 10px;
