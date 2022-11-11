@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.container div {
+  background-color: #fff;
+  width: 7px;
+  height: 7px;
+  border-radius: 7px;
+  margin: 2.5px;
+  animation-name: fade;
+  animation-duration: 0.3s;
+  animation-delay: var(--delay);
+  animation-iteration-count: infinite;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    background-color: #aaa;
+  }
+  50% {
+    background-color: #fff;
+  }
+}

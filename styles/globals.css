@@ -1,0 +1,44 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --home-page-header-height: 100px;
+  background-color: black;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+.notion-collection-row {
+  display: none;
+}
+
+@font-face {
+  font-family: "汉字手写1";
+  src: url("../assets/font/yezigongchangzongyipangbaiti.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "汉字手写2";
+  src: url("../assets/font/rixikeaiqingshuti.ttf");
+  font-display: swap;
+}

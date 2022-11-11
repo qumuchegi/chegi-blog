@@ -1,0 +1,47 @@
+.list_comtainer {
+  margin-top: 0px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: #fff;
+  height: calc(100vh - var(--home-page-header-height));
+  overflow-y: scroll;
+}
+.list_item {
+  padding: 10px;
+  list-style: none;
+  border: solid 0.5px #000;
+  margin-bottom: 4px;
+  font-family: "汉字手写2";
+}
+.list_item:hover {
+  cursor: pointer;
+  border: solid 0.5px #eee;
+  box-shadow: 3px 3px 0px #fff;
+}
+.list_item_selected {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.list_item_selected::before {
+  margin-right: 10px;
+  background-image: url("../../../assets/img/ic_spinner.png");
+  background-size: 10px 10px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  content: "";
+  animation: spin 0.5s infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

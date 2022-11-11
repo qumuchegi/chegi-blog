@@ -1,0 +1,24 @@
+.container {
+  margin-top: 0px;
+  z-index: 0;
+}
+.content {
+  padding-top: 50px;
+  line-height: 1.8rem;
+  min-height: calc(100vh - var(--home-page-header-height));
+  font-family: "汉字手写2";
+  /* color: #fff; */
+  background-color: #fff;
+  /* @media screen and (max-width: 768px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: calc(100vw - 20px);
+    word-break: break-all;
+    overflow: auto;
+    margin: auto;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: calc(100vw - 50vw - 20vw) / 2;
+    padding-right: calc(100vw - 50vw - 20vw) / 2;
+  } */
+}

@@ -1,0 +1,147 @@
+.header {
+  width: 100%;
+  height: var(--home-page-header-height);
+  background-color: #fff;
+  padding: 10px 20px;
+  position: relative;
+  border-bottom: solid 0.5px #aaa;
+}
+.row1 {
+  display: flex;
+  justify-content: space-between;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.row2 {
+  display: flex;
+  justify-content: center;
+}
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2rem;
+  font-family: "汉字手写1";
+}
+.title:hover {
+  cursor: pointer;
+}
+.communicate_icon {
+  width: 30px;
+  height: 30px;
+  /* border-radius: 30px; */
+  margin-left: 30px;
+}
+.tab_container {
+  position: absolute;
+  z-index: 2;
+  bottom: calc(var(--tab-height) * -0.5);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-shrink: 1;
+  width: fit-content;
+  --tab-height: 38px;
+  height: var(--tab-height);
+  box-sizing: content-box;
+  border-radius: 64px;
+  background: #e0e0e0;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+}
+.tab_item {
+  padding: 7px 16px;
+  color: rgb(6, 45, 84);
+  height: var(--tab-height);
+  text-align: center;
+  border: none;
+  vertical-align: middle;
+}
+.tab_item:first-child,
+.tab_item_selected:first-child {
+  border-radius: 64px 0 0 64px;
+}
+.tab_item:last-child,
+.tab_item_selected:last-child {
+  border-radius: 0 64px 64px 0;
+}
+.tab_item_selected,
+.tab_item:hover {
+  background-color: #aaa;
+  color: #000;
+  cursor: pointer;
+  border-color: #fff;
+}
+.tab_item_selected {
+  background-color: #fff;
+  padding: 7px 16px;
+  height: var(--tab-height);
+  text-align: center;
+  border: none;
+  vertical-align: middle;
+}
+
+.tab_divider {
+  width: 0.5px;
+  height: var(--tab-height);
+  background-color: #aaa;
+}
+
+@media screen and (min-width: 400px) {
+  .shrink_tab {
+    animation: 0.3s ease-in both running shrink_tab;
+  }
+}
+@media screen and (max-width: 400px) {
+  .shrink_tab {
+    animation: 0.3s ease-in both running shrink_tab_mobile;
+  }
+}
+
+@keyframes shrink_tab {
+  from {
+    left: 40%;
+  }
+  to {
+    left: 10px;
+  }
+}
+
+@keyframes shrink_tab_mobile {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+.article_title {
+  color: #000;
+  z-index: 1;
+  padding-left: 8px;
+  padding-right: 8px;
+  animation-name: article_title_display;
+  animation-duration: 0.5s;
+}
+@media screen and (min-width: 400px) {
+  .article_title {
+  }
+}
+@media screen and (max-width: 400px) {
+  .article_title {
+  }
+}
+
+@keyframes article_title_display {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scaleY(100%);
+  }
+}
