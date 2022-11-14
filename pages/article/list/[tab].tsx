@@ -17,7 +17,7 @@ export default function ArticleList() {
     <div>
       <Head>
         <title>{`Chegi's Space Home - ${tab}`}</title>
-        <meta name="description" content="Chegi`s Space Home" />
+        <meta name="description" content={tab ?? "Chegi's Space Home"} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
@@ -27,7 +27,7 @@ export default function ArticleList() {
             if ((i as ArticleInfoWithCollection).articles) {
               // 子分类
               return (
-                <li key={i.collection}>
+                <li key={i.collection} className={styles.list_item_collection}>
                   <div>{i.collection}</div>
                   <ul>
                     {(i as ArticleInfoWithCollection).articles.map((a) => (

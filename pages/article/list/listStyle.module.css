@@ -7,12 +7,19 @@
   background-color: black;
   color: #fff;
 }
+.list_item_collection {
+  list-style: none;
+  border: solid 0.5px #000;
+}
+.list_item_collection:hover {
+  border: solid 0.5px #eee;
+}
 .list_item {
   padding: 10px;
   list-style: none;
   border: solid 0.5px #000;
   margin-bottom: 4px;
-  font-family: "汉字手写2";
+  /* font-family: "汉字手写2"; */
 }
 .list_item:hover {
   cursor: pointer;

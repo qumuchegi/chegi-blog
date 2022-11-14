@@ -59,15 +59,12 @@ export default function Header(props: IHeaderProps) {
   return (
     <div className={styles.header}>
       <div className={styles.row1}>
-        <div className={styles.title} onClick={() => router.push("/")}>
-          <Image
-            src={icAvatar}
-            className={styles.avatar}
-            alt=""
-            onClick={() => router.push("/")}
-          />
-          <div>Chegi`s Space</div>
-        </div>
+        <Link href="/">
+          <div className={styles.title}>
+            <Image src={icAvatar} className={styles.avatar} alt="" />
+            <div>Chegi`s Space</div>
+          </div>
+        </Link>
         <div>
           <a
             href="https://space.bilibili.com/373142943"
