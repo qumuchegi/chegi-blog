@@ -8,12 +8,15 @@ export default async function Page() {
     <>
       <h1>streaming SSR</h1>
       <Suspense fallback={<div>loading 1</div>}>
+        {/*@ts-ignore*/}
         <Com1 />
       </Suspense>
       <Suspense fallback={<div>loading 2</div>}>
+        {/*@ts-ignore*/}
         <Com2 />
       </Suspense>
       <Suspense fallback={<div>loading 3</div>}>
+        {/*@ts-ignore*/}
         <Com3 />
       </Suspense>
     </>
