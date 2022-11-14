@@ -130,10 +130,10 @@ export default function Header(props: IHeaderProps) {
             className={styles.tab_container}
             style={{
               right: "10px",
-              width: "20px",
-              height: "20px",
-              borderRadius: "20px",
-              bottom: "-10px",
+              width: "25px",
+              height: "25px",
+              borderRadius: "25px",
+              bottom: "-12.5px",
               justifyContent: "center",
             }}
           >

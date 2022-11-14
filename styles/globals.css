@@ -42,3 +42,9 @@ a {
   src: url("../assets/font/rixikeaiqingshuti.ttf");
   font-display: swap;
 }
+
+@font-face {
+  font-family: "兰米细圆";
+  src: url("../assets/font/兰米细圆.ttf");
+  font-display: swap;
+}

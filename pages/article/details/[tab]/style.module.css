@@ -6,7 +6,7 @@
   padding-top: 50px;
   line-height: 1.8rem;
   min-height: calc(100vh - var(--home-page-header-height));
-  font-family: "汉字手写2";
+  font-family: "兰米细圆", "Sans-serif";
   /* color: #fff; */
   background-color: #fff;
   /* @media screen and (max-width: 768px) {
