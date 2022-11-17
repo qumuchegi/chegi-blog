@@ -1,4 +1,9 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+  GetStaticPaths,
+  GetStaticProps,
+} from "next";
 import Head from "next/head";
 import { useEffect } from "react";
 import Header from "../../../../components/Header";
@@ -7,11 +12,18 @@ import {
   useSelectedArticle,
   useSetSelectedArticle,
 } from "../../../../contexts/RootContext";
-import { getContentOfArticleForRender } from "../../../../utils/notion";
+import {
+  ArticleInfo,
+  ArticleInfoWithCollection,
+} from "../../../../type/notion";
+import {
+  fetchArticles,
+  getContentOfArticleForRender,
+} from "../../../../utils/notion";
 import styles from "./style.module.css";
 
 export default function ArticleDetails(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
+  props: InferGetServerSidePropsType<typeof getStaticProps>
 ) {
   const { id, articleNotionBlocks } = props;
   const setSelectedArticle = useSetSelectedArticle();
@@ -40,14 +52,64 @@ export default function ArticleDetails(
   );
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const articleNotionBlocks = await getContentOfArticleForRender(
-    (ctx.query?.id as string) ?? ""
-  );
+// export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+//   const articleNotionBlocks = await getContentOfArticleForRender(
+//     (ctx.query?.id as string) ?? ""
+//   );
+//   return {
+//     props: {
+//       id: ctx.query?.id,
+//       articleNotionBlocks,
+//     },
+//   };
+// }
+
+type QueryObj = {
+  tab: string;
+  id: string;
+};
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const tabArticles = await fetchArticles();
+  let paths: {
+    params: QueryObj;
+  }[] = [];
+  Object.entries(tabArticles).forEach(([tab, articles]) => {
+    articles.forEach((i) => {
+      if ((i as ArticleInfoWithCollection).articles) {
+        (i as ArticleInfoWithCollection).articles.forEach((a) => {
+          paths.push({
+            params: {
+              tab,
+              id: a.articleId,
+            },
+          });
+        });
+      } else {
+        paths.push({
+          params: {
+            tab,
+            id: (i as ArticleInfo).articleId,
+          },
+        });
+      }
+    });
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<any, QueryObj> = async (
+  context
+) => {
+  const params = context.params;
+  const { tab, id } = params ?? { tab: "", id: "" };
+  const articleNotionBlocks = await getContentOfArticleForRender(id ?? "");
   return {
     props: {
-      id: ctx.query?.id,
+      id: id,
       articleNotionBlocks,
     },
   };
-}
+};

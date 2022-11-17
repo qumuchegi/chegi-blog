@@ -1,0 +1,11 @@
+name: schedule_deploy
+
+on:
+  push:
+  schedule:
+    - cron: "0 0/1 * * *" #每个小时运行一次
+jobs:
+  set-up-env:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_68ulfshB1NsLjtJkSAGUNlqudDdj/VFs5dC5ysm

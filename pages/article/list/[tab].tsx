@@ -38,7 +38,6 @@ export default function ArticleList() {
                             ? styles.list_item_selected
                             : ""
                         }`}
-                        onClick={() => setClickedArtcile(a.articleId)}
                       >
                         <Link
                           prefetch
@@ -47,6 +46,7 @@ export default function ArticleList() {
                             display: "flex",
                             justifyContent: "space-between",
                           }}
+                          onClick={() => setClickedArtcile(a.articleId)}
                         >
                           <div>{a.title}</div>
                           {a.cover && (
@@ -67,7 +67,6 @@ export default function ArticleList() {
                     ? styles.list_item_selected
                     : ""
                 }`}
-                onClick={() => setClickedArtcile((i as ArticleInfo).articleId)}
               >
                 <Link
                   prefetch
@@ -76,6 +75,9 @@ export default function ArticleList() {
                     tab +
                     "/" +
                     (i as ArticleInfo).articleId
+                  }
+                  onClick={() =>
+                    setClickedArtcile((i as ArticleInfo).articleId)
                   }
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
