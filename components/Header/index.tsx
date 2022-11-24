@@ -13,7 +13,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { joinAnyToArr } from "../../utils/array";
-import useSWR from "swr";
 import getAllArticles from "../../network/getAllArticles";
 import TabLoading from "./TabLoading";
 import { getIsWideScreen } from "../../utils/device";
@@ -28,11 +27,22 @@ export default function Header(props: IHeaderProps) {
   useEffect(() => {
     setIsWideScreen(window && getIsWideScreen(window));
   }, []);
-  const { data, error } = useSWR(
-    !articlesByTabs ? "api/getAllArticles" : "",
-    getAllArticles,
-    {}
-  );
+  const [data, setData] =
+    useState<Awaited<ReturnType<typeof getAllArticles>>>();
+  useEffect(() => {
+    const getArtcilesList = async () => {
+      try {
+        const _data = await getAllArticles();
+        setData(_data);
+      } catch (err) {}
+    };
+    getArtcilesList();
+  }, []);
+  // const { data, error } = useSWR(
+  //   !articlesByTabs ? "api/getAllArticles" : "",
+  //   getAllArticles,
+  //   {}
+  // );
   const articles = data?.articles;
   useEffect(() => {
     articles && setArticlsByTabs?.(articles);
@@ -104,7 +114,7 @@ export default function Header(props: IHeaderProps) {
             joinAnyToArr(
               tabs.map((i, index) => (
                 <Link
-                  key={i}
+                  key={i + index}
                   href={"/article/list/" + i}
                   className={`${
                     selectedTab === i

@@ -52,18 +52,6 @@ export default function ArticleDetails(
   );
 }
 
-// export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-//   const articleNotionBlocks = await getContentOfArticleForRender(
-//     (ctx.query?.id as string) ?? ""
-//   );
-//   return {
-//     props: {
-//       id: ctx.query?.id,
-//       articleNotionBlocks,
-//     },
-//   };
-// }
-
 type QueryObj = {
   tab: string;
   id: string;
