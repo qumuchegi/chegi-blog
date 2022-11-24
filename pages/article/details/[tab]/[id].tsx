@@ -84,7 +84,11 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   });
   return {
     paths,
-    fallback: false,
+    fallback: true,
+    // fallback:
+    // 1. 如果 fallback 为 false，则 getStaticPaths 未返回的任何路径都将导致 404 页面。
+    // 2. 您可以静态生成一小部分页面并使用 fallback: true 来处理其余部分。当有人请求尚未生成的页面时，用户将看到带有加载指示器或骨架组件的页面。
+    // 3. 如果 fallback: 'blocking'，则 getStaticPaths 未返回的新路径将等待生成 HTML，与 SSR 相同（因此阻塞），然后缓存以供将来请求使用，因此每个路径只发生一次。
   };
 };
 

@@ -1,6 +1,6 @@
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { fetchArticles } from "../utils/notion";
 import Header from "../components/Header";
 import Head from "next/head";
