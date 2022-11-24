@@ -99,6 +99,7 @@ export const getStaticProps: GetStaticProps<any, QueryObj> = async (
   const { tab, id } = params ?? { tab: "", id: "" };
   const articleNotionBlocks = await getContentOfArticleForRender(id ?? "");
   return {
+    revalidate: 10, // 10 秒后更新页面及其缓存
     props: {
       id: id,
       articleNotionBlocks,
