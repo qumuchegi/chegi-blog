@@ -73,21 +73,9 @@ export default function Header(props: IHeaderProps) {
         <Link href="/">
           <div className={styles.title}>
             <Image src={icAvatar} className={styles.avatar} alt="" />
-            <div>Chegi`s Space</div>
+            <div className={styles.head_title}>Chegi`s Space</div>
             {router.pathname !== "/" && (
-              <div
-                style={{
-                  color: "#fff",
-                  fontSize: "1.1rem",
-                  padding: "4px",
-                  marginLeft: "10px",
-                  backgroundColor: "orange",
-                  borderRadius: "5px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+              <div className={styles.navi_home_ablumn}>
                 <div>相册</div>
                 <Image
                   src={icNav}

@@ -167,3 +167,36 @@
     transform: scaleY(100%);
   }
 }
+@media screen and (min-width: 400px) {
+  .navi_home_ablumn {
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 4px;
+    margin-left: 10px;
+    background-color: orange;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .head_title {
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navi_home_ablumn {
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 4px;
+    margin-left: 10px;
+    background-color: orange;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .head_title {
+    font-size: 1.2rem;
+  }
+}
