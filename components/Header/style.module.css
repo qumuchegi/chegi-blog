@@ -99,13 +99,23 @@
   .shrink_tab {
     animation: 0.3s ease-in both running shrink_tab;
   }
+  .expand_tab {
+    animation: 0.3s ease-in both running expand_tab;
+  }
 }
 @media screen and (max-width: 400px) {
   .shrink_tab {
     animation: 0.3s ease-in both running shrink_tab_mobile;
   }
 }
-
+@keyframes expand_tab {
+  from {
+    left: 10px;
+  }
+  to {
+    left: 40%;
+  }
+}
 @keyframes shrink_tab {
   from {
     left: 40%;
@@ -136,6 +146,7 @@
   overflow: hidden;
   animation-name: article_title_display;
   animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
 }
 @media screen and (min-width: 400px) {
   .article_title {
@@ -143,7 +154,8 @@
 }
 @media screen and (max-width: 400px) {
   .article_title {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
+    color: rgb(233, 117, 50);
   }
 }
 

@@ -138,10 +138,35 @@
   width: calc(100vw / 2);
   height: calc(calc(100vh - var(--home-page-header-height)) / 2);
 }
+.home_ablumn_item_normal {
+  transform: rotateY(0);
+  transition: transform 1s;
+}
+.home_ablumn_item_fliped {
+  transform: rotateY(180deg);
+  transition: transform 1s;
+}
 .home_ablumn_item_pic {
+  position: absolute;
+  backface-visibility: hidden;
   width: calc(100vw / 2);
   height: calc(calc(100vh - var(--home-page-header-height)) / 2);
   object-fit: cover;
+}
+.home_ablumn_item_back {
+  background-color: rgba(253, 253, 253, 0.3);
+  color: #fff;
+  backface-visibility: hidden;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-wrap: normal;
+  padding: 10px;
+  font-family: "汉字手写1";
+  font-size: 1.5rem;
+  overflow-y: scroll;
 }
 .home_ablum_item_desc {
   position: absolute;
@@ -153,4 +178,15 @@
   flex: 1;
   width: 140px;
   height: fit-content;
+}
+.home_ablum_item_flip {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(253, 253, 253, 0.7);
+  padding: 3px;
+  border-radius: 5px;
 }

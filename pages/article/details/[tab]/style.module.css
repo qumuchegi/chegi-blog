@@ -7,8 +7,10 @@
   line-height: 1.8rem;
   min-height: calc(100vh - var(--home-page-header-height));
   font-family: "兰米细圆", "Sans-serif";
+  overflow: scroll;
   /* color: #fff; */
   background-color: #fff;
+
   /* @media screen and (max-width: 768px) {
     padding-left: 10px;
     padding-right: 10px;
@@ -21,4 +23,10 @@
     padding-left: calc(100vw - 50vw - 20vw) / 2;
     padding-right: calc(100vw - 50vw - 20vw) / 2;
   } */
+}
+
+.content > table {
+  width: 100%;
+  overflow: auto;
+  word-break: break-all;
 }

@@ -18,6 +18,7 @@ import TabLoading from "./TabLoading";
 import { getIsWideScreen } from "../../utils/device";
 import icExpand from "../../assets/img/ic_expand.png";
 import icAvatar from "../../assets/img/ic_avatar.png";
+import icNav from "../../assets/img/ic_navigator.png";
 interface IHeaderProps {}
 export default function Header(props: IHeaderProps) {
   const [isWideScreen, setIsWideScreen] = useState(false);
@@ -73,6 +74,28 @@ export default function Header(props: IHeaderProps) {
           <div className={styles.title}>
             <Image src={icAvatar} className={styles.avatar} alt="" />
             <div>Chegi`s Space</div>
+            {router.pathname !== "/" && (
+              <div
+                style={{
+                  color: "#fff",
+                  fontSize: "1.1rem",
+                  padding: "4px",
+                  marginLeft: "10px",
+                  backgroundColor: "orange",
+                  borderRadius: "5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div>相册</div>
+                <Image
+                  src={icNav}
+                  style={{ width: "15px", height: "15px" }}
+                  alt=""
+                />
+              </div>
+            )}
           </div>
         </Link>
         <div>
@@ -105,7 +128,11 @@ export default function Header(props: IHeaderProps) {
       <div className={styles.row2}>
         <div
           className={`${styles.tab_container} ${
-            isShrinkTab ? styles.shrink_tab : ""
+            isShrinkTab
+              ? styles.shrink_tab
+              : // : /article\/details/.test(document?.referrer ?? "")
+                // ? styles.expand_tab
+                ""
           }`}
         >
           {!tabs.length ? (
@@ -140,10 +167,10 @@ export default function Header(props: IHeaderProps) {
             className={styles.tab_container}
             style={{
               right: "10px",
-              width: "25px",
-              height: "25px",
-              borderRadius: "25px",
-              bottom: "-12.5px",
+              width: "30px",
+              height: "30px",
+              borderRadius: "30px",
+              bottom: "-15px",
               justifyContent: "center",
             }}
           >
