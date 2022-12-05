@@ -8,6 +8,7 @@ import { NotionAPI } from "notion-client";
 
 const notionAuthToken = process.env.myNotionAuthToken;
 const collectionId = process.env.myBlogsCollectionId as string;
+const ablumnCollectionId = process.env.myAblumnCollectionId as string;
 const notionAPI = new NotionClinet({
   auth: notionAuthToken,
 });
@@ -20,6 +21,30 @@ export async function fetchArticles() {
   });
   const formated = _formatCMSData(res.results);
   return formated;
+}
+
+// 获取相册
+export async function fetchAblumn() {
+  const res = await notionAPI.databases.query({
+    database_id: parsePageId(ablumnCollectionId),
+  });
+  const collectionData = res.results;
+  // console.log({ collectionData: JSON.stringify(collectionData) });
+  return collectionData.map((row) => {
+    const { properties } = row;
+    const address = properties.address.rich_text?.[0]?.plain_text;
+    const name = properties.Name.title?.[0]?.plain_text;
+    const desc = properties.description.rich_text?.[0]?.plain_text ?? "";
+    const picUrl = properties.pic.url;
+    const time = properties.time.date.start;
+    return {
+      name,
+      address,
+      desc,
+      picUrl,
+      time,
+    };
+  });
 }
 
 // 获取当个文章的 notion 格式的内容
