@@ -31,7 +31,7 @@ export async function fetchAblumn() {
   const collectionData = res.results;
   // console.log({ collectionData: JSON.stringify(collectionData) });
   return collectionData.map((row) => {
-    const { properties } = row;
+    const { properties } = row as any;
     const address = properties.address.rich_text?.[0]?.plain_text;
     const name = properties.Name.title?.[0]?.plain_text;
     const desc = properties.description.rich_text?.[0]?.plain_text ?? "";
