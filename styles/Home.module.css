@@ -179,6 +179,11 @@
   width: 140px;
   height: fit-content;
 }
+@media screen and (max-width: 768px) {
+  .home_ablum_item_flip {
+    display: none;
+  }
+}
 .home_ablum_item_flip {
   opacity: 0;
   position: absolute;

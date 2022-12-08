@@ -6,7 +6,7 @@ import { fetchAblumn, fetchArticles } from "../utils/notion";
 import Header from "../components/Header";
 import Head from "next/head";
 import Image from "next/image";
-import Carousel from "nuka-carousel";
+import Carousel, { ScrollMode } from "nuka-carousel";
 import styles from "../styles/Home.module.css";
 import icAddress from "../assets/img/ic_address.png";
 import icDate from "../assets/img/ic_date.png";
@@ -43,7 +43,7 @@ export default function Home({ pics }: IHomeProps) {
       </Head>
       <Header />
       <div>
-        <Carousel>
+        <Carousel scrollMode={ScrollMode.remainder}>
           {groupArr(pics, 4).map((_4pics, index) => (
             <div key={index} className={styles.home_ablum}>
               {_4pics.map(({ picUrl, address, time, desc }, index) => {
