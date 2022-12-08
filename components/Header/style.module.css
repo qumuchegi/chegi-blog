@@ -147,6 +147,8 @@
   animation-name: article_title_display;
   animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
+  border: solid 0.5px rgb(233, 117, 50);
+  color: rgb(233, 117, 50);
 }
 @media screen and (min-width: 400px) {
   .article_title {
@@ -155,7 +157,6 @@
 @media screen and (max-width: 400px) {
   .article_title {
     font-size: 0.8rem;
-    color: rgb(233, 117, 50);
   }
 }
 

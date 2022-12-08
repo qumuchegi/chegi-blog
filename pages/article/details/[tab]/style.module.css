@@ -6,7 +6,8 @@
   padding-top: 50px;
   line-height: 1.8rem;
   min-height: calc(100vh - var(--home-page-header-height));
-  font-family: "兰米细圆", "Sans-serif";
+  font-family: "Sans-serif";
+  font-size: 0.8em;
   overflow: scroll;
   /* color: #fff; */
   background-color: #fff;
