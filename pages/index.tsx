@@ -59,73 +59,76 @@ export default function Home({ pics }: IHomeProps) {
         <Carousel scrollMode={ScrollMode.remainder}>
           {groupArr(pics, 4).map((_4pics, _index) => (
             <div key={_index} className={styles.home_ablum}>
-              {_4pics.map(({ picUrl, address, time, desc }, index) => {
-                return (
-                  <div key={index} className={`${styles.home_ablumn_item}`}>
-                    <div
-                      className={`${styles.home_ablumn_item_pic_container} ${
-                        flipedAblumn === index
-                          ? styles.home_ablumn_item_fliped
-                          : styles.home_ablumn_item_normal
-                      }`}
-                    >
-                      <img
-                        src={picUrl}
-                        className={styles.home_ablumn_item_pic}
-                        alt=""
-                        onClick={() => flipAblumItem(index)}
-                      />
+              {_4pics.map(
+                ({ picUrl, thumbnail, address, time, desc }, index) => {
+                  return (
+                    <div key={index} className={`${styles.home_ablumn_item}`}>
                       <div
-                        className={styles.home_ablum_item_desc}
-                        style={{
-                          left: 0,
-                          bottom: 0,
-                          width: "100%",
-                          borderRadius: "0 0 10px 10px",
-                        }}
+                        className={`${styles.home_ablumn_item_pic_container} ${
+                          flipedAblumn === index
+                            ? styles.home_ablumn_item_fliped
+                            : styles.home_ablumn_item_normal
+                        }`}
                       >
+                        <img
+                          src={thumbnail}
+                          className={styles.home_ablumn_item_pic}
+                          alt=""
+                          onClick={() => flipAblumItem(index)}
+                        />
+                        <div
+                          className={styles.home_ablum_item_desc}
+                          style={{
+                            left: 0,
+                            bottom: 0,
+                            width: "100%",
+                            borderRadius: "0 0 10px 10px",
+                          }}
+                        >
+                          <div>
+                            <Image
+                              src={icAddress}
+                              width={10}
+                              height={10}
+                              alt=""
+                            />
+                            {address}
+                          </div>
+                          <div>
+                            <Image src={icDate} width={10} height={10} alt="" />
+                            {time}
+                          </div>
+                        </div>
                         <div>
                           <Image
-                            src={icAddress}
-                            width={10}
-                            height={10}
+                            src={icExpand}
+                            width={20}
                             alt=""
+                            height={20}
+                            onClick={() => openImageViewer(index + _index * 4)}
                           />
-                          {address}
-                        </div>
-                        <div>
-                          <Image src={icDate} width={10} height={10} alt="" />
-                          {time}
+                          <Image
+                            src={icFlip}
+                            className={`${styles.home_ablum_item_flip}`}
+                            alt=""
+                            onClick={() => flipAblumItem(index)}
+                          />
                         </div>
                       </div>
-                      <div>
-                        <Image
-                          src={icExpand}
-                          width={20}
-                          alt=""
-                          height={20}
-                          onClick={() => openImageViewer(index + _index * 4)}
-                        />
+                      <div
+                        className={`${styles.home_ablumn_item_pic} ${
+                          flipedAblumn !== index
+                            ? styles.home_ablumn_item_fliped
+                            : styles.home_ablumn_item_normal
+                        } ${styles.home_ablumn_item_back}`}
+                        onClick={() => flipAblumItem(index)}
+                      >
+                        {desc}
                       </div>
                     </div>
-                    <div
-                      className={`${styles.home_ablumn_item_pic} ${
-                        flipedAblumn !== index
-                          ? styles.home_ablumn_item_fliped
-                          : styles.home_ablumn_item_normal
-                      } ${styles.home_ablumn_item_back}`}
-                      onClick={() => flipAblumItem(index)}
-                    >
-                      {desc}
-                    </div>
-                    <Image
-                      src={icFlip}
-                      className={`${styles.home_ablum_item_flip}`}
-                      alt=""
-                    />
-                  </div>
-                );
-              })}
+                  );
+                }
+              )}
             </div>
           ))}
         </Carousel>

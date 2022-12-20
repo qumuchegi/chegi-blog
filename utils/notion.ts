@@ -36,6 +36,7 @@ export async function fetchAblumn() {
     const name = properties.Name.title?.[0]?.plain_text;
     const desc = properties.description.rich_text?.[0]?.plain_text ?? "";
     const picUrl = properties.pic.url;
+    const thumbnail = properties.thumbnail.url;
     const time = properties.time.date.start;
     return {
       name,
@@ -43,6 +44,7 @@ export async function fetchAblumn() {
       desc,
       picUrl,
       time,
+      thumbnail,
     };
   });
 }
