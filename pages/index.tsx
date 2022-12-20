@@ -102,6 +102,7 @@ export default function Home({ pics }: IHomeProps) {
                         <Image
                           src={icExpand}
                           width={20}
+                          alt=""
                           height={20}
                           onClick={() => openImageViewer(index)}
                         />
