@@ -57,8 +57,8 @@ export default function Home({ pics }: IHomeProps) {
       <Header />
       <div>
         <Carousel scrollMode={ScrollMode.remainder}>
-          {groupArr(pics, 4).map((_4pics, index) => (
-            <div key={index} className={styles.home_ablum}>
+          {groupArr(pics, 4).map((_4pics, _index) => (
+            <div key={_index} className={styles.home_ablum}>
               {_4pics.map(({ picUrl, address, time, desc }, index) => {
                 return (
                   <div key={index} className={`${styles.home_ablumn_item}`}>
@@ -104,7 +104,7 @@ export default function Home({ pics }: IHomeProps) {
                           width={20}
                           alt=""
                           height={20}
-                          onClick={() => openImageViewer(index)}
+                          onClick={() => openImageViewer(index + _index * 4)}
                         />
                       </div>
                     </div>
