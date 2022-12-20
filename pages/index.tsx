@@ -11,7 +11,9 @@ import styles from "../styles/Home.module.css";
 import icAddress from "../assets/img/ic_address.png";
 import icDate from "../assets/img/ic_date.png";
 import icFlip from "../assets/img/ic_flip.png";
+import icExpand from "../assets/img/expand.png";
 import { groupArr } from "../utils/array";
+import ImageViewer from "react-simple-image-viewer";
 
 interface IHomeProps {
   pics: {
@@ -22,10 +24,12 @@ interface IHomeProps {
     time: string;
   }[];
 }
+
 export default function Home({ pics }: IHomeProps) {
   const [flipedAblumn, setFlipedAblumn] = useState<number | null>(null);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
   const flipAblumItem = (index: number) => {
-    console.log(index);
     setFlipedAblumn((pre) => {
       if (pre === index) {
         return null;
@@ -33,6 +37,15 @@ export default function Home({ pics }: IHomeProps) {
         return index;
       }
     });
+  };
+  const openImageViewer = (index: number) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  };
+
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
   };
   return (
     <div>
@@ -48,26 +61,59 @@ export default function Home({ pics }: IHomeProps) {
             <div key={index} className={styles.home_ablum}>
               {_4pics.map(({ picUrl, address, time, desc }, index) => {
                 return (
-                  <div
-                    key={index}
-                    className={`${styles.home_ablumn_item}`}
-                    onClick={() => flipAblumItem(index)}
-                  >
-                    <img
-                      src={picUrl}
-                      className={`${styles.home_ablumn_item_pic} ${
+                  <div key={index} className={`${styles.home_ablumn_item}`}>
+                    <div
+                      className={`${styles.home_ablumn_item_pic_container} ${
                         flipedAblumn === index
                           ? styles.home_ablumn_item_fliped
                           : styles.home_ablumn_item_normal
                       }`}
-                      alt=""
-                    />
+                      onClick={() => flipAblumItem(index)}
+                    >
+                      <img
+                        src={picUrl}
+                        className={styles.home_ablumn_item_pic}
+                        alt=""
+                      />
+                      <div
+                        className={styles.home_ablum_item_desc}
+                        style={{
+                          left: 0,
+                          bottom: 0,
+                          width: "100%",
+                          borderRadius: "0 0 10px 10px",
+                        }}
+                      >
+                        <div>
+                          <Image
+                            src={icAddress}
+                            width={10}
+                            height={10}
+                            alt=""
+                          />
+                          {address}
+                        </div>
+                        <div>
+                          <Image src={icDate} width={10} height={10} alt="" />
+                          {time}
+                        </div>
+                      </div>
+                      <div>
+                        <Image
+                          src={icExpand}
+                          width={20}
+                          height={20}
+                          onClick={() => openImageViewer(index)}
+                        />
+                      </div>
+                    </div>
                     <div
                       className={`${styles.home_ablumn_item_pic} ${
                         flipedAblumn !== index
                           ? styles.home_ablumn_item_fliped
                           : styles.home_ablumn_item_normal
                       } ${styles.home_ablumn_item_back}`}
+                      onClick={() => flipAblumItem(index)}
                     >
                       {desc}
                     </div>
@@ -76,26 +122,6 @@ export default function Home({ pics }: IHomeProps) {
                       className={`${styles.home_ablum_item_flip}`}
                       alt=""
                     />
-                    <div
-                      className={styles.home_ablum_item_desc}
-                      style={
-                        [
-                          { right: 0, bottom: 0 },
-                          { left: 0, bottom: 0 },
-                          { right: 0, top: 0 },
-                          { left: 0, top: 0 },
-                        ][index]
-                      }
-                    >
-                      <div>
-                        <Image src={icAddress} width={10} height={10} alt="" />
-                        {address}
-                      </div>
-                      <div>
-                        <Image src={icDate} width={10} height={10} alt="" />
-                        {time}
-                      </div>
-                    </div>
                   </div>
                 );
               })}
@@ -103,6 +129,18 @@ export default function Home({ pics }: IHomeProps) {
           ))}
         </Carousel>
       </div>
+      {isViewerOpen && (
+        <ImageViewer
+          src={pics.map((i) => i.picUrl)}
+          currentIndex={currentImage}
+          onClose={closeImageViewer}
+          disableScroll={false}
+          backgroundStyle={{
+            backgroundColor: "rgba(0,0,0,0.9)",
+          }}
+          closeOnClickOutside={true}
+        />
+      )}
     </div>
   );
 }
