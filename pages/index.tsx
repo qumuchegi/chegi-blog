@@ -68,12 +68,12 @@ export default function Home({ pics }: IHomeProps) {
                           ? styles.home_ablumn_item_fliped
                           : styles.home_ablumn_item_normal
                       }`}
-                      onClick={() => flipAblumItem(index)}
                     >
                       <img
                         src={picUrl}
                         className={styles.home_ablumn_item_pic}
                         alt=""
+                        onClick={() => flipAblumItem(index)}
                       />
                       <div
                         className={styles.home_ablum_item_desc}
