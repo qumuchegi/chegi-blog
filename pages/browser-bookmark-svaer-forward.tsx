@@ -9,9 +9,18 @@ import axios from "axios";
 import cookie from "cookie";
 
 export default function Forward(props: any) {
-  React.useEffect(() => {}, [props]);
+  React.useEffect(() => {
+    const t = setTimeout(() => {
+      window.close();
+    }, 4000);
+    return () => {
+      clearTimeout(t);
+    };
+  }, [props]);
   return (
-    <div style={{ color: "#fff" }}>forward to browser bookmark saver...</div>
+    <div style={{ color: "#fff" }}>
+      success to login in Notion! auto jump back to extension tab page...
+    </div>
   );
 }
 export async function getServerSideProps(
@@ -60,7 +69,10 @@ export async function getServerSideProps(
 
   ctx.res.setHeader(
     "Set-Cookie",
-    cookie.serialize("oauthInfo", JSON.stringify(oauthInfo))
+    cookie.serialize("oauthInfo", JSON.stringify(oauthInfo), {
+      httpOnly: false,
+      hostOnly: false,
+    })
   );
   return {
     props: {},
