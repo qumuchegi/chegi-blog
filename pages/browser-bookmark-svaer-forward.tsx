@@ -3,6 +3,8 @@ import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
 } from "next";
+import Image from "next/image";
+import bookmarkExtensionIcon from "../assets/img/bookmark-extersion-icon.png";
 import * as React from "react";
 import axios from "axios";
 //@ts-ignore
@@ -18,8 +20,23 @@ export default function Forward(props: any) {
     };
   }, [props]);
   return (
-    <div style={{ color: "#fff" }}>
-      success to login in Notion! auto jump back to extension tab page...
+    <div
+      style={{
+        backgroundColor: "#fff",
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Image src={bookmarkExtensionIcon} width={100} height={100} alt="" />
+      <h1 style={{ color: "rgb(54, 212, 70)" }}>success to login in Notion!</h1>
+      <h2>
+        Now try to click the icon in the upper right corner of your browser to
+        open the pop-up window
+      </h2>
     </div>
   );
 }
